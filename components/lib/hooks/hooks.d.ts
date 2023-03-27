@@ -2,6 +2,12 @@ import * as React from 'react';
 
 export type TargetType = 'document' | 'window' | React.Ref<HTMLElement> | undefined;
 export type StorageType = 'local' | 'session';
+export type EventType = 'outside' | 'click' | 'resize' | 'scroll';
+
+interface OverlayEventOptionsListenerType {
+    type: EventType;
+    valid: boolean;
+}
 
 interface EventOptions {
     target?: TargetType;
@@ -14,7 +20,7 @@ interface EventOptions {
 interface OverlayEventOptions {
     target?: TargetType;
     overlay?: TargetType;
-    listener?(event: Event, type?: string): void;
+    listener?(event: Event, type?: OverlayEventOptionsListenerType ): void;
     when?: boolean;
 }
 
